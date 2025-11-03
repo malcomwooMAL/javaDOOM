@@ -20,6 +20,11 @@ public class Main {
             System.out.println("Número de lumps: " + wadLoader.getNumLumps());
             System.out.println("Offset do diretório: " + wadLoader.getDirectoryOffset());
 
+            System.out.println("\n--- Primeiros 10 Lumps ---");
+            for (int i = 0; i < 10 && i < wadLoader.getLumps().size(); i++) {
+                System.out.println(wadLoader.getLumps().get(i));
+            }
+
         } catch (IOException e) {
             System.err.println("Erro ao carregar o arquivo WAD: " + e.getMessage());
             e.printStackTrace();
