@@ -91,4 +91,8 @@ public class WadLoader {
     public List<Lump> getLumps() {
         return lumps;
     }
+
+    public String getWadFile() {
+        return wadFile;
+    }
 }

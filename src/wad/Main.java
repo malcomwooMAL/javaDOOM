@@ -25,8 +25,15 @@ public class Main {
                 System.out.println(wadLoader.getLumps().get(i));
             }
 
+            System.out.println("\n--- Carregando Mapa E1M1 ---");
+            wad.map.MapData mapData = wad.map.MapLoader.loadMap(wadLoader, "E1M1");
+            System.out.println("Mapa E1M1 carregado com sucesso!");
+            System.out.println("Número de vértices: " + mapData.vertices.size());
+            System.out.println("Número de linedefs: " + mapData.linedefs.size());
+
+
         } catch (IOException e) {
-            System.err.println("Erro ao carregar o arquivo WAD: " + e.getMessage());
+            System.err.println("Erro ao carregar o arquivo WAD ou mapa: " + e.getMessage());
             e.printStackTrace();
         }
     }
