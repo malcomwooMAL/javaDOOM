@@ -2,8 +2,6 @@ package wad;
 
 import wad.map.MapData;
 import wad.map.MapLoader;
-import wad.map.MapData;
-import wad.map.MapLoader;
 import wad.view.MapPanel;
 
 import javax.imageio.ImageIO;
@@ -27,6 +25,11 @@ public class Main {
 
             System.out.println("Carregando Mapa E1M1...");
             MapData mapData = MapLoader.loadMap(wadLoader, "E1M1");
+            System.out.println("Mapa E1M1 carregado com sucesso!");
+            System.out.println(" - Vértices: " + mapData.vertices.size());
+            System.out.println(" - Linedefs: " + mapData.linedefs.size());
+            System.out.println(" - Sidedefs: " + mapData.sidedefs.size());
+            System.out.println(" - Setores: " + mapData.sectors.size());
 
             System.out.println("Renderizando mapa em arquivo...");
 
