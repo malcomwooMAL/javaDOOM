@@ -1,8 +1,9 @@
 package wad;
 
+import wad.game.Player;
 import wad.map.MapData;
 import wad.map.MapLoader;
-import wad.view.MapPanel;
+import wad.view.ViewPanel;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -25,13 +26,11 @@ public class Main {
 
             System.out.println("Carregando Mapa E1M1...");
             MapData mapData = MapLoader.loadMap(wadLoader, "E1M1");
-            System.out.println("Mapa E1M1 carregado com sucesso!");
-            System.out.println(" - Vértices: " + mapData.vertices.size());
-            System.out.println(" - Linedefs: " + mapData.linedefs.size());
-            System.out.println(" - Sidedefs: " + mapData.sidedefs.size());
-            System.out.println(" - Setores: " + mapData.sectors.size());
 
-            System.out.println("Renderizando mapa em arquivo...");
+            // Posição inicial do jogador no E1M1
+            Player player = new Player(1056, -3616, Math.PI / 2);
+
+            System.out.println("Renderizando visão 3D em arquivo...");
 
             int width = 800;
             int height = 600;
@@ -39,16 +38,16 @@ public class Main {
             BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = image.createGraphics();
 
-            MapPanel mapPanel = new MapPanel(mapData);
-            mapPanel.setSize(width, height);
-            mapPanel.paint(g2d);
+            ViewPanel viewPanel = new ViewPanel(mapData, player);
+            viewPanel.setSize(width, height);
+            viewPanel.paint(g2d);
 
             g2d.dispose();
 
-            File outputFile = new File("map_e1m1.png");
+            File outputFile = new File("view_3d_e1m1.png");
             ImageIO.write(image, "png", outputFile);
 
-            System.out.println("Mapa salvo em: " + outputFile.getAbsolutePath());
+            System.out.println("Visão 3D salva em: " + outputFile.getAbsolutePath());
 
         } catch (IOException e) {
             System.err.println("Erro: " + e.getMessage());
